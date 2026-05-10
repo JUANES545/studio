@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juan Esteban Mejía — Projects</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #080b10;
+      --card-bg:      rgba(255, 255, 255, 0.04);
+      --card-border:  rgba(255, 255, 255, 0.08);
+      --text:         #e8eaf0;
+      --muted:        #6b7585;
+      --accent:       #4f9eff;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ── Layout ── */
+    .content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 100px 0 72px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+
+    header h1 span {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    header p {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 460px;
+      margin: 0 auto 32px;
+      line-height: 1.65;
+    }
+
+    .header-links {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+    }
+
+    .header-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .header-links a:hover { color: var(--accent); }
+
+    /* ── Section label ── */
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    /* ── Cards grid ── */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 14px;
+      margin-bottom: 100px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 28px 26px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: border-color 0.25s, background 0.25s, transform 0.25s;
+    }
+
+    .card:hover {
+      border-color: rgba(79, 158, 255, 0.28);
+      background: rgba(255, 255, 255, 0.065);
+      transform: translateY(-3px);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .card-icon {
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .card-arrow {
+      font-size: 16px;
+      color: var(--muted);
+      transition: transform 0.2s, color 0.2s;
+    }
+
+    .card:hover .card-arrow {
+      transform: translate(3px, -3px);
+      color: var(--accent);
+    }
+
+    .card h2 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #fff;
+      letter-spacing: -0.01em;
+    }
+
+    .card p {
+      font-size: 0.86rem;
+      color: var(--muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.03em;
+      padding: 3px 9px;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--muted);
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 24px 0 44px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      border-top: 1px solid var(--card-border);
+      letter-spacing: 0.03em;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 480px) {
+      header { padding: 72px 0 52px; }
+      .projects { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+
+<div class="content">
+
+  <header>
+    <h1>Juan Esteban <span>Mejía</span></h1>
+    <p>Android &amp; games developer. Building tools that blur the line between software and hardware.</p>
+    <div class="header-links">
+      <a href="https://github.com/JUANES545" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://juanes545.github.io/WebJuan/" target="_blank" rel="noopener">3D Portfolio ↗</a>
+    </div>
+  </header>
+
+  <p class="section-label">Selected projects</p>
+
+  <div class="projects">
+
+    <a class="card" href="https://github.com/JUANES545/Superior-Controller" target="_blank" rel="noopener">
+      <div class="card-top">
+        <div class="card-icon">🎮</div>
+        <span class="card-arrow">↗</span>
+      </div>
+      <h2>Superior Controller</h2>
+      <p>Turn your Android phone into a Bluetooth HID gamepad. Connects wirelessly to PC, Mac, and TV — no drivers required.</p>
+      <div class="tags">
+        <span class="tag">Android</span>
+        <span class="tag">Kotlin</span>
+        <span class="tag">Bluetooth HID</span>
+        <span class="tag">Jetpack Compose</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://github.com/JUANES545/DeckBridge" target="_blank" rel="noopener">
+      <div class="card-top">
+        <div class="card-icon">⌨️</div>
+        <span class="card-arrow">↗</span>
+      </div>
+      <h2>DeckBridge</h2>
+      <p>Control your PC or Mac from your phone as a hardware-style macro deck. Pair over LAN, run macros, mirror state in real time.</p>
+      <div class="tags">
+        <span class="tag">Android</span>
+        <span class="tag">Kotlin</span>
+        <span class="tag">LAN</span>
+        <span class="tag">Macro Deck</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://juanes545.github.io/WebJuan/" target="_blank" rel="noopener">
+      <div class="card-top">
+        <div class="card-icon">🌐</div>
+        <span class="card-arrow">↗</span>
+      </div>
+      <h2>Portfolio Game</h2>
+      <p>Personal portfolio presented as an interactive 3D web experience. Explore projects inside a real-time rendered environment.</p>
+      <div class="tags">
+        <span class="tag">Three.js</span>
+        <span class="tag">WebGL</span>
+        <span class="tag">JavaScript</span>
+      </div>
+    </a>
+
+  </div>
+
+  <footer>
+    Juan Esteban Mejía &nbsp;·&nbsp; Bogotá, Colombia
+  </footer>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+  const canvas  = document.getElementById('bg');
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+
+  const scene  = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 200);
+  camera.position.z = 50;
+
+  // ── Particles ──────────────────────────────────────────────────────────
+  const COUNT = 200;
+  const positions = new Float32Array(COUNT * 3);
+  for (let i = 0; i < COUNT; i++) {
+    positions[i * 3]     = (Math.random() - 0.5) * 130;
+    positions[i * 3 + 1] = (Math.random() - 0.5) * 90;
+    positions[i * 3 + 2] = (Math.random() - 0.5) * 70;
+  }
+
+  const pGeo = new THREE.BufferGeometry();
+  pGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+  const pMat = new THREE.PointsMaterial({
+    color: 0x4f9eff,
+    size: 0.3,
+    transparent: true,
+    opacity: 0.5,
+    sizeAttenuation: true,
+  });
+
+  scene.add(new THREE.Points(pGeo, pMat));
+
+  // ── Connection lines (static mesh, built once) ─────────────────────────
+  const CONNECT_DIST = 20;
+  const lineVerts = [];
+
+  for (let i = 0; i < COUNT; i++) {
+    for (let j = i + 1; j < COUNT; j++) {
+      const dx = positions[i * 3]     - positions[j * 3];
+      const dy = positions[i * 3 + 1] - positions[j * 3 + 1];
+      const dz = positions[i * 3 + 2] - positions[j * 3 + 2];
+      if (dx * dx + dy * dy + dz * dz < CONNECT_DIST * CONNECT_DIST) {
+        lineVerts.push(
+          positions[i * 3], positions[i * 3 + 1], positions[i * 3 + 2],
+          positions[j * 3], positions[j * 3 + 1], positions[j * 3 + 2],
+        );
+      }
+    }
+  }
+
+  const lGeo = new THREE.BufferGeometry();
+  lGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(lineVerts), 3));
+  const lMat = new THREE.LineBasicMaterial({ color: 0x4f9eff, transparent: true, opacity: 0.07 });
+  scene.add(new THREE.LineSegments(lGeo, lMat));
+
+  // ── Subtle mouse parallax ──────────────────────────────────────────────
+  let mx = 0, my = 0;
+  document.addEventListener('mousemove', e => {
+    mx = (e.clientX / window.innerWidth  - 0.5) * 2;
+    my = (e.clientY / window.innerHeight - 0.5) * 2;
+  });
+
+  // ── Resize ────────────────────────────────────────────────────────────
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+
+  // ── Render loop ───────────────────────────────────────────────────────
+  const clock = new THREE.Clock();
+  const root  = scene.children[0]; // points group
+
+  (function animate() {
+    requestAnimationFrame(animate);
+    const t = clock.getElapsedTime();
+    scene.rotation.y = t * 0.016;
+    scene.rotation.x = t * 0.007;
+    camera.position.x += (mx * 3  - camera.position.x) * 0.04;
+    camera.position.y += (-my * 2 - camera.position.y) * 0.04;
+    renderer.render(scene, camera);
+  })();
+</script>
+
+</body>
+</html>
