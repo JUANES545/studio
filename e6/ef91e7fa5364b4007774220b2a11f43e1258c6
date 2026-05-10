@@ -1,0 +1,19 @@
+README.md
+  s_4c47e3c03b2127::t_64fdeb3cfa2338 1-54
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.5",
+  "base_commit_sha": "e6ef91e7fa5364b4007774220b2a11f43e1258c6",
+  "prompts": {},
+  "sessions": {
+    "s_4c47e3c03b2127": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "163d29be-6c3b-45cc-8f44-c2e367e66b38",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "JUANES5545 <juanes.reich@gmail.com>"
+    }
+  }
+}
