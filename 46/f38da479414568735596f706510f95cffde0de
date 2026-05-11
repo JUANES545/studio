@@ -1,0 +1,21 @@
+index.html
+  s_4c47e3c03b2127::t_d590fc1ba06992 168-170,175-186,189-194
+  s_4c47e3c03b2127::t_e9ea4e8f5b96d7 444
+  s_4c47e3c03b2127::t_93fd7a26bc5c9a 555-572
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.6",
+  "base_commit_sha": "46f38da479414568735596f706510f95cffde0de",
+  "prompts": {},
+  "sessions": {
+    "s_4c47e3c03b2127": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "163d29be-6c3b-45cc-8f44-c2e367e66b38",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "JUANES5545 <juanes.reich@gmail.com>"
+    }
+  }
+}
